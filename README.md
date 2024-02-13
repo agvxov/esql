@@ -3,7 +3,7 @@
 
 ## What is embeded SQL?
 In short, this:
-```
+```C
 #include <stdio.h>
 
 signed main(){

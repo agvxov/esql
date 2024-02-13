@@ -5,3 +5,4 @@ object/
 venv/
 
 .peru
+source/sqlfun/
