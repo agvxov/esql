@@ -1,0 +1,7 @@
+esql
+object/
+*.out
+.gdb_history
+venv/
+
+.peru

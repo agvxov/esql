@@ -1,0 +1,5 @@
+imports:
+    sqlfun: source/sqlfun  # This is where we want peru to put the module.
+
+git module sqlfun:
+    url: http://github.com/agvxov/sqlfun.git

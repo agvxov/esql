@@ -1,0 +1,8 @@
+#include <stdio.h>
+
+signed main(){
+	EXEC SQL CONNECT TO testdb AS myconnection;
+	EXEC SQL INSERT INTO a VALUES (10);
+
+	return i;
+}
