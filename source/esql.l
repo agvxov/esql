@@ -43,7 +43,7 @@ EXEC{wsnl}+SQL{wsnl}+ {
 ;   {
     sql += yytext;
     printf("Found SQL: \"%s\"\n", sql.c_str());
-    db->eval(sql.c_str());
+    db->exec(sql.c_str());
     sql = "";
     BEGIN INITIAL;
 }

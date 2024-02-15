@@ -37,7 +37,7 @@ connect: CONNECT STRING AS STRING END { db->connect($2, $4); }
 
 statement: STRING { statement_buffer += $1; }
     | statement STRING { statement_buffer += $2; }
-    | statement END { db->eval(statement_buffer.c_str()); statement_buffer = ""; }
+    | statement END { db->exec(statement_buffer.c_str()); statement_buffer = ""; }
     ;
 
 %%
