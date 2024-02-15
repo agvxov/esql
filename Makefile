@@ -6,7 +6,7 @@ ifeq (${DEBUG}, 1)
   CXXFLAGS += -DDEBUG -O0 -ggdb -fno-inline	
   WRAP     := valgrind --track-origins=yes --leak-check=full --show-leak-kinds=all 
 else
-  CXXFLAGS += -O3 -fno-stack-protector -fno-exceptions -fno-rtti
+  CXXFLAGS += -O3 -fno-stack-protector -fno-rtti
 endif
 
 CXXFLAGS += -Isource/ -Iobject/ -Isource/sqlfun/source/
@@ -40,7 +40,7 @@ object/%.o: object/%.cpp
 	${COMPILE.cpp} $< -o $@
 
 
-main: ${GENOBJECT} source/main.o ${REEEEEEEE}
+main: ${GENOBJECT} object/main.o ${REEEEEEEE}
 	${LINK.cpp} -o ${OUTPUT} $+ ${LDLIBS}
 
 clean:
