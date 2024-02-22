@@ -1,8 +1,13 @@
+extern void esql_error(const char * msg);
+
 class Database {
+protected:
+    int validate(const char * const sql);
 public:
     virtual char * declare(const char * const from) = 0;
     virtual void scope_push() = 0;
     virtual void scope_pop() = 0;
+    virtual void scope_clear() = 0;
 
     virtual char * connect(const char * const to, const char * const as) = 0;
 #if 0
@@ -25,6 +30,4 @@ public:
 #endif
 
     virtual char * exec(const char * const sql) = 0;
-
-    int validate(const char * const sql);
 };
