@@ -1,3 +1,5 @@
+#include "Database.hpp"
+
 extern "C" {
     #include "sql.tab.h"
     #include "yyl.h"
@@ -5,20 +7,21 @@ extern "C" {
     #include "sql-parser.h"
 }
 
-int validate(const char * const sql) {
+int Database::validate(const char * const sql) {
     int r;
     char * dup = strdup(sql);
-    struct psql_state *pstate;
+    struct psql_state * pstate = psql_new();
     if(!pstate) {
         return 1;
     }
 
     psql_set_string_input(pstate, dup);
+    yyerrno = 0;
     r = psql_parse(pstate);
 
     psql_free(pstate);
     free(dup);
 
-    return !r
-        && !yyerrno;
+    return r
+        || yyerrno;
 }
