@@ -24,5 +24,5 @@ signed main([[ maybe_unused ]] int argc, char * * argv) {
     db = sqlite;
     esql_parse();
 
-    return 0;
+    return esql_errno;
 }
