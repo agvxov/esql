@@ -13,7 +13,7 @@ endif
 CXXFLAGS += -Isource/ -Iobject/ -Isource/sqlfun/source/
 LDLIBS += $$(pkg-config --cflags --libs sqlite3 jansson)
 
-SOURCE := main.cpp Database.cpp
+SOURCE := main.cpp Database.cpp Sqlite.cpp
 OBJECT := $(subst .cpp,.o,${SOURCE})
 SOURCE := $(addprefix source/,${SOURCE})
 OBJECT := $(addprefix object/,${OBJECT})
