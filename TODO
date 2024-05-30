@@ -1,0 +1,2 @@
+your next job will be to assign a value to IDENTIFIER so that declare() does not throw a logic_error
+this is required to do type lookups for an asprintf to have dynamic inserts
