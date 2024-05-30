@@ -1,10 +1,14 @@
+#ifndef EMBEDED_DATABASE_HPP
+#define EMBEDED_DATABASE_HPP
 extern void esql_error(const char * msg);
 
 class Database {
 protected:
     int validate(const char * const sql);
 public:
-    virtual char * declare(const char * const from) = 0;
+    virtual char * top() = 0;
+
+    virtual void declare(const char * const type, const char * const name) = 0;
     virtual void scope_push() = 0;
     virtual void scope_pop() = 0;
     virtual void scope_clear() = 0;
@@ -31,3 +35,4 @@ public:
 
     virtual char * exec(const char * const sql) = 0;
 };
+#endif
