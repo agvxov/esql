@@ -9,18 +9,16 @@ extern "C" {
 
 int Database::validate(const char * const sql) {
     int r;
-    char * dup = strdup(sql);
     struct psql_state * pstate = psql_new();
     if(!pstate) {
         return 1;
     }
 
-    psql_set_string_input(pstate, dup);
+    psql_set_string_input(pstate, sql);
     yyerrno = 0;
     r = psql_parse(pstate);
 
     psql_free(pstate);
-    free(dup);
 
     return r
         || yyerrno;
