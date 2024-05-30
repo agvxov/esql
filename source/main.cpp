@@ -9,7 +9,7 @@ Database * db;
 
 char * esql_filename;
 
-signed main(int argc, char * * argv) {
+signed main([[ maybe_unused ]] int argc, char * * argv) {
     #if DEBUG
     esql_debug = 1;
     #endif
