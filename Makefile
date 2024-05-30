@@ -1,3 +1,5 @@
+.PHONY: test
+
 ifeq (${DEBUG}, 1)
   LFLAGS   += --debug --trace
   YYFLAGS  += --debug -Wall -Wcounterexamples
@@ -25,6 +27,10 @@ OBJECT.sqlfun := $(addprefix source/sqlfun/source/,${OBJECT.sqlfun})
 GENSOURCE := $(addprefix object/,esql.tab.cpp esql.yy.cpp)
 
 GENOBJECT := $(subst .cpp,.o,${GENSOURCE})
+
+TEST.source := static_insert.sqc dynamic_insert.sqc
+TEST.out    := $(addprefix object/,$(addsuffix .out,${TEST.source}))
+TEST.source := $(addprefix debug/,${TEST.source})
 
 OUTPUT := esql
 
@@ -56,5 +62,15 @@ clean:
 	-rm object/*
 	-cd source/sqlfun/; make clean
 
-test:
-	esql debug/static_insert.sqc
+object/%.sqc.c: debug/%.sqc
+	bat $<
+	esql $< > $@
+
+object/%.sqc.out: object/%.sqc.c
+	bat $<
+	${CC} $< -o $@ -lsqlite3
+
+test.clean:
+	-rm object/*.sqc.*
+
+test: test.clean ${TEST.out}
