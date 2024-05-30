@@ -1,0 +1,11 @@
+#include <stdio.h>
+
+signed main(){
+	EXEC SQL BEGIN DECLARE SECTION;
+	int i = 10;
+	EXEC SQL END DECLARE SECTION;
+	EXEC SQL CONNECT TO testdb AS myconnection;
+	EXEC SQL INSERT INTO a VALUES (:i);
+
+	return 0;
+}
